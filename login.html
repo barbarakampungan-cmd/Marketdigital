@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Login</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<section class="login-page">
+
+    <div class="login-box">
+
+        <!-- ========================= -->
+        <!-- FLASH MESSAGE -->
+        <!-- ========================= -->
+
+        {% with messages = get_flashed_messages() %}
+
+            {% if messages %}
+
+                {% for message in messages %}
+
+                    <div
+                    style="
+                    background:#22c55e;
+                    color:white;
+                    padding:15px;
+                    border-radius:10px;
+                    margin-bottom:20px;
+                    text-align:center;
+                    ">
+
+                        {{ message }}
+
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+        {% endwith %}
+
+        <!-- ========================= -->
+        <!-- TITLE -->
+        <!-- ========================= -->
+
+        <h1>
+            Login Account
+        </h1>
+
+        <p
+        style="
+        text-align:center;
+        margin-bottom:30px;
+        color:#94a3b8;
+        ">
+
+            Masuk ke akun marketplace digital kamu
+
+        </p>
+
+        <!-- ========================= -->
+        <!-- FORM -->
+        <!-- ========================= -->
+
+        <form method="POST">
+
+            <!-- EMAIL -->
+
+            <input
+            type="email"
+            name="email"
+            placeholder="Masukkan Email"
+            required>
+
+            <!-- PASSWORD -->
+
+            <input
+            type="password"
+            name="password"
+            placeholder="Masukkan Password"
+            required>
+
+            <!-- BUTTON -->
+
+            <button type="submit">
+
+                Login
+
+            </button>
+
+        </form>
+
+        <!-- ========================= -->
+        <!-- REGISTER -->
+        <!-- ========================= -->
+
+        <p
+        style="
+        text-align:center;
+        margin-top:25px;
+        ">
+
+            Belum punya akun?
+
+            <a href="/register"
+            style="
+            color:#38bdf8;
+            text-decoration:none;
+            font-weight:bold;
+            ">
+
+                Register
+
+            </a>
+
+        </p>
+
+    </div>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout Berhasil</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<!-- ========================= -->
+<!-- NAVBAR -->
+<!-- ========================= -->
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            DigitalMarket
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">Home</a>
+
+            <a href="/dashboard">
+                Dashboard
+            </a>
+
+            <a href="/my-orders">
+                Pesanan
+            </a>
+
+            <a href="/logout">
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+<!-- ========================= -->
+<!-- SUCCESS SECTION -->
+<!-- ========================= -->
+
+<section class="login-page">
+
+    <div class="login-box">
+
+        <!-- ICON -->
+
+        <div
+        style="
+        font-size:70px;
+        text-align:center;
+        margin-bottom:20px;
+        ">
+
+            ✅
+
+        </div>
+
+        <!-- TITLE -->
+
+        <h1>
+            Checkout Berhasil
+        </h1>
+
+        <!-- DESCRIPTION -->
+
+        <p
+        style="
+        text-align:center;
+        margin-top:15px;
+        margin-bottom:30px;
+        color:#94a3b8;
+        line-height:1.7;
+        ">
+
+            Produk berhasil dibeli.
+            Sekarang kamu bisa download
+            file digitalnya.
+
+        </p>
+
+        <!-- PRODUCT INFO -->
+
+        <div
+        style="
+        background:#0f172a;
+        padding:20px;
+        border-radius:15px;
+        margin-bottom:25px;
+        ">
+
+            <p
+            style="
+            color:#38bdf8;
+            font-weight:bold;
+            margin-bottom:10px;
+            ">
+
+                {{ product.category }}
+
+            </p>
+
+            <h2
+            style="
+            color:white;
+            margin-bottom:15px;
+            ">
+
+                {{ product.title }}
+
+            </h2>
+
+            <div
+            style="
+            color:#22c55e;
+            font-size:25px;
+            font-weight:bold;
+            ">
+
+                Rp {{ product.price }}
+
+            </div>
+
+        </div>
+
+        <!-- DOWNLOAD BUTTON -->
+
+        <a href="{{ product.file }}"
+        download
+        style="
+        display:block;
+        text-align:center;
+        background:#22c55e;
+        padding:16px;
+        border-radius:12px;
+        color:white;
+        text-decoration:none;
+        font-size:18px;
+        font-weight:bold;
+        ">
+
+            Download Produk
+
+        </a>
+
+        <!-- MY ORDERS -->
+
+        <a href="/my-orders"
+        style="
+        display:block;
+        text-align:center;
+        background:#38bdf8;
+        padding:16px;
+        border-radius:12px;
+        color:white;
+        text-decoration:none;
+        font-size:16px;
+        margin-top:15px;
+        ">
+
+            Lihat Pesanan Saya
+
+        </a>
+
+        <!-- HOMEPAGE -->
+
+        <a href="/"
+        style="
+        display:block;
+        text-align:center;
+        margin-top:20px;
+        color:#38bdf8;
+        text-decoration:none;
+        ">
+
+            ← Kembali ke Homepage
+
+        </a>
+
+    </div>
+
+</section>
+
+</body>
+</html>

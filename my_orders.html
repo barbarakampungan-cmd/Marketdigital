@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Pesanan Saya</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<!-- ========================= -->
+<!-- NAVBAR -->
+<!-- ========================= -->
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            DigitalMarket
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">Home</a>
+
+            <a href="/dashboard">
+                Dashboard
+            </a>
+
+            <a href="/logout">
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+<!-- ========================= -->
+<!-- PAGE TITLE -->
+<!-- ========================= -->
+
+<section
+style="
+padding:40px 20px 20px;
+text-align:center;
+">
+
+    <h1
+    style="
+    font-size:40px;
+    color:white;
+    margin-bottom:10px;
+    ">
+
+        Pesanan Saya
+
+    </h1>
+
+    <p
+    style="
+    color:#94a3b8;
+    ">
+
+        Semua produk digital
+        yang pernah kamu beli
+
+    </p>
+
+</section>
+
+<!-- ========================= -->
+<!-- ORDERS -->
+<!-- ========================= -->
+
+<section class="products">
+
+    {% if orders %}
+
+        {% for order in orders %}
+
+        <div class="product-card">
+
+            <div class="product-info">
+
+                <!-- TITLE -->
+
+                <h2
+                style="
+                color:white;
+                margin-bottom:15px;
+                ">
+
+                    {{ order.product_title }}
+
+                </h2>
+
+                <!-- PRICE -->
+
+                <div class="price">
+
+                    Rp {{ order.price }}
+
+                </div>
+
+                <br>
+
+                <!-- DOWNLOAD -->
+
+                <a href="{{ order.file }}"
+                download
+                style="
+                display:block;
+                text-align:center;
+                background:#22c55e;
+                padding:15px;
+                border-radius:10px;
+                color:white;
+                text-decoration:none;
+                font-weight:bold;
+                ">
+
+                    Download Lagi
+
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <!-- EMPTY -->
+
+        <div
+        style="
+        width:100%;
+        text-align:center;
+        padding:60px 20px;
+        ">
+
+            <h2
+            style="
+            color:white;
+            margin-bottom:15px;
+            ">
+
+                Belum Ada Pesanan
+
+            </h2>
+
+            <p
+            style="
+            color:#94a3b8;
+            margin-bottom:25px;
+            ">
+
+                Kamu belum membeli produk apapun
+
+            </p>
+
+            <a href="/"
+            style="
+            background:#38bdf8;
+            color:white;
+            padding:15px 25px;
+            border-radius:10px;
+            text-decoration:none;
+            ">
+
+                Mulai Belanja
+
+            </a>
+
+        </div>
+
+    {% endif %}
+
+</section>
+
+</body>
+</html>

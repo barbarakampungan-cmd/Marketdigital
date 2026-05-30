@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<!-- ========================= -->
+<!-- NAVBAR -->
+<!-- ========================= -->
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            DigitalMarket
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">Home</a>
+
+            <a href="/dashboard">
+                Dashboard
+            </a>
+
+            <a href="/logout">
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+<!-- ========================= -->
+<!-- PAGE TITLE -->
+<!-- ========================= -->
+
+<section
+style="
+padding:40px 20px;
+text-align:center;
+">
+
+    <h1
+    style="
+    font-size:40px;
+    color:white;
+    margin-bottom:10px;
+    ">
+
+        Admin Dashboard
+
+    </h1>
+
+    <p
+    style="
+    color:#94a3b8;
+    ">
+
+        Kelola produk dan transaksi marketplace
+
+    </p>
+
+</section>
+
+<!-- ========================= -->
+<!-- FLASH MESSAGE -->
+<!-- ========================= -->
+
+{% with messages = get_flashed_messages() %}
+
+    {% if messages %}
+
+        <section
+        style="
+        max-width:900px;
+        margin:auto;
+        padding:0 20px;
+        ">
+
+            {% for message in messages %}
+
+                <div
+                style="
+                background:#22c55e;
+                color:white;
+                padding:15px;
+                border-radius:12px;
+                margin-bottom:20px;
+                text-align:center;
+                ">
+
+                    {{ message }}
+
+                </div>
+
+            {% endfor %}
+
+        </section>
+
+    {% endif %}
+
+{% endwith %}
+
+<!-- ========================= -->
+<!-- PRODUK -->
+<!-- ========================= -->
+
+<section
+style="
+padding:20px;
+">
+
+    <h2
+    style="
+    color:white;
+    margin-bottom:25px;
+    ">
+
+        Semua Produk
+
+    </h2>
+
+    <div class="products">
+
+        {% for product in products %}
+
+        <div class="product-card">
+
+            <!-- IMAGE -->
+
+            <img src="{{ product.image }}">
+
+            <div class="product-info">
+
+                <!-- CATEGORY -->
+
+                <p
+                style="
+                color:#38bdf8;
+                font-weight:bold;
+                margin-bottom:10px;
+                ">
+
+                    {{ product.category }}
+
+                </p>
+
+                <!-- TITLE -->
+
+                <h3>
+
+                    {{ product.title }}
+
+                </h3>
+
+                <!-- DESCRIPTION -->
+
+                <p>
+
+                    {{ product.description }}
+
+                </p>
+
+                <!-- PRICE -->
+
+                <div class="price">
+
+                    Rp {{ product.price }}
+
+                </div>
+
+                <br>
+
+                <!-- DELETE BUTTON -->
+
+           <a href="/delete-product/{{ product.id }}"
+                style="
+                display:block;
+                text-align:center;
+                background:#ef4444;
+                padding:14px;
+                border-radius:10px;
+                color:white;
+                text-decoration:none;
+                font-weight:bold;
+                ">
+            <a href="/edit-product/{{ product.id }}"
+                  style="
+                display:block;
+                text-align:center;
+                background:#f59e0b;
+                padding:12px;
+                border-radius:10px;
+                color:white;
+                text-decoration:none;
+                margin-bottom:10px;
+                ">
+                Edit Produk
+            </a>  
+
+                    Hapus Produk
+
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- TRANSAKSI -->
+<!-- ========================= -->
+
+<section
+style="
+padding:20px;
+">
+
+    <h2
+    style="
+    color:white;
+    margin-bottom:25px;
+    ">
+
+        Semua Transaksi
+
+    </h2>
+
+    {% if transactions %}
+
+        <div
+        style="
+        display:flex;
+        flex-direction:column;
+        gap:20px;
+        ">
+
+            {% for trx in transactions %}
+
+            <div
+            style="
+            background:#1e293b;
+            padding:20px;
+            border-radius:15px;
+            ">
+
+                <!-- PRODUCT -->
+
+                <h3
+                style="
+                color:white;
+                margin-bottom:15px;
+                ">
+
+                    {{ trx.product_title }}
+
+                </h3>
+
+                <!-- USER -->
+
+                <p
+                style="
+                color:#cbd5e1;
+                margin-bottom:10px;
+                ">
+
+                    Pembeli:
+                    <b>
+                        {{ trx.user_email }}
+                    </b>
+
+                </p>
+
+                <!-- PRICE -->
+
+                <div
+                style="
+                color:#22c55e;
+                font-size:22px;
+                font-weight:bold;
+                ">
+
+                    Rp {{ trx.price }}
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div
+        style="
+        background:#1e293b;
+        padding:30px;
+        border-radius:15px;
+        text-align:center;
+        color:#94a3b8;
+        ">
+
+            Belum ada transaksi
+
+        </div>
+
+    {% endif %}
+
+</section>
+
+</body>
+</html>

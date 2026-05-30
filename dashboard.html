@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<section class="dashboard-page">
+
+    <div class="dashboard-box">
+
+        <!-- ========================= -->
+        <!-- FLASH MESSAGE -->
+        <!-- ========================= -->
+
+        {% with messages = get_flashed_messages() %}
+
+            {% if messages %}
+
+                {% for message in messages %}
+
+                    <div
+                    style="
+                    background:#22c55e;
+                    color:white;
+                    padding:15px;
+                    border-radius:10px;
+                    margin-bottom:20px;
+                    text-align:center;
+                    ">
+
+                        {{ message }}
+
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+        {% endwith %}
+
+        <!-- ========================= -->
+        <!-- TITLE -->
+        <!-- ========================= -->
+
+        <h1>
+            Dashboard User
+        </h1>
+
+        <p
+        style="
+        text-align:center;
+        margin-top:10px;
+        color:#94a3b8;
+        ">
+
+            Selamat datang,
+
+            <b>
+                {{ email }}
+            </b>
+
+        </p>
+
+        <br><br>
+
+        <!-- ========================= -->
+        <!-- MENU -->
+        <!-- ========================= -->
+
+        <a href="/upload-product"
+        style="
+        display:block;
+        text-align:center;
+        background:#38bdf8;
+        padding:15px;
+        border-radius:10px;
+        color:white;
+        text-decoration:none;
+        margin-bottom:20px;
+        ">
+
+            Upload Produk
+
+        </a>
+
+        <a href="/my-orders"
+        style="
+        display:block;
+        text-align:center;
+        background:#f59e0b;
+        padding:15px;
+        border-radius:10px;
+        color:white;
+        text-decoration:none;
+        margin-bottom:20px;
+        ">
+
+            Pesanan Saya
+
+        </a>
+
+        <a href="/admin"
+        style="
+        display:block;
+        text-align:center;
+        background:#ef4444;
+        padding:15px;
+        border-radius:10px;
+        color:white;
+        text-decoration:none;
+        margin-bottom:20px;
+        ">
+
+            Admin Dashboard
+
+        </a>
+
+        <a href="/"
+        style="
+        display:block;
+        text-align:center;
+        background:#22c55e;
+        padding:15px;
+        border-radius:10px;
+        color:white;
+        text-decoration:none;
+        margin-bottom:20px;
+        ">
+
+            Kembali ke Homepage
+
+        </a>
+
+        <a href="/logout"
+        style="
+        display:block;
+        text-align:center;
+        background:#0f172a;
+        padding:15px;
+        border-radius:10px;
+        color:white;
+        text-decoration:none;
+        ">
+
+            Logout
+
+        </a>
+
+    </div>
+
+</section>
+
+</body>
+</html>

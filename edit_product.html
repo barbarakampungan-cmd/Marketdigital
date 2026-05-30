@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Produk</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<section class="login-page">
+
+    <div class="login-box">
+
+        <h1>Edit Produk</h1>
+
+        <form method="POST">
+
+            <!-- TITLE -->
+
+            <input
+            type="text"
+            name="title"
+            value="{{ product.title }}"
+            required>
+
+            <!-- DESCRIPTION -->
+
+            <input
+            type="text"
+            name="description"
+            value="{{ product.description }}"
+            required>
+
+            <!-- PRICE -->
+
+            <input
+            type="number"
+            name="price"
+            value="{{ product.price }}"
+            required>
+
+            <!-- CATEGORY -->
+
+            <select
+            name="category"
+            required
+            style="
+            width:100%;
+            padding:15px;
+            border:none;
+            border-radius:10px;
+            margin-bottom:15px;
+            ">
+
+                <option
+                value="Ebook"
+                {% if product.category == "Ebook" %}
+                selected
+                {% endif %}
+                >
+                    Ebook
+                </option>
+
+                <option
+                value="Template"
+                {% if product.category == "Template" %}
+                selected
+                {% endif %}
+                >
+                    Template
+                </option>
+
+                <option
+                value="Preset"
+                {% if product.category == "Preset" %}
+                selected
+                {% endif %}
+                >
+                    Preset
+                </option>
+
+                <option
+                value="Course"
+                {% if product.category == "Course" %}
+                selected
+                {% endif %}
+                >
+                    Course
+                </option>
+
+            </select>
+
+            <!-- BUTTON -->
+
+            <button type="submit">
+                Update Produk
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+</body>
+</html>
